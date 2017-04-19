@@ -42,10 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PlayerComponent\BufferRender.cs" />
     <Compile Include="PlayerComponent\IMediaRender.cs" />
     <Compile Include="PlayerComponent\MediaRender.cs" />
     <Compile Include="PlayerComponent\RenderDecorator.cs" />
     <Compile Include="Player\BasePlayer.cs" />
+    <Compile Include="Player\BufferPlayer.cs" />
     <Compile Include="Player\ResizeablePlayer.cs" />
     <Compile Include="PlayerComponent\ResizeableRender.cs" />
     <Compile Include="PlayerComponent\View.cs" />

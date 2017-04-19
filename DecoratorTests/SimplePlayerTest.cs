@@ -3,6 +3,7 @@ using Xunit;
 using NSubstitute;
 using Decorator.PlayerComponent;
 using System.Threading;
+using Decorator.Player;
 
 namespace DecoratorTests
 {
@@ -47,7 +48,7 @@ namespace DecoratorTests
 			var expected = Substitute.For<IMediaRender>();
 			BufferRender bufferRender = new BufferRender(expected);
 
-			BufferPlayer sut = BufferPlayerTest(bufferRender);
+			BufferPlayer sut = new BufferPlayer(bufferRender);
 
 			expected.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
 			expected.ReceivedWithAnyArgs().AddAudioData(default(byte[]));

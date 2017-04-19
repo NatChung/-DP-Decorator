@@ -16,12 +16,12 @@ namespace Decorator.PlayerComponent
 			this.Render = render;
 		}
 
-		public void AddAudioData(byte[] data)
+		public virtual void AddAudioData(byte[] data)
 		{
 			this.Render.AddAudioData(data);
 		}
 
-		public void AddVideoData(byte[] data)
+		public virtual void AddVideoData(byte[] data)
 		{
 			this.Render.AddVideoData(data);
 		}
