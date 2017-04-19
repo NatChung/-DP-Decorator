@@ -39,5 +39,20 @@ namespace DecoratorTests
 			var view = expected.Received().View;
 			Thread.Sleep(100);
 		}
+
+		[Fact]
+		[Trait("Decorator", "Buffer player")]
+		public void BufferPlayerTest()
+		{
+			var expected = Substitute.For<IMediaRender>();
+			BufferRender bufferRender = new BufferRender(expected);
+
+			BufferPlayer sut = BufferPlayerTest(bufferRender);
+
+			expected.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
+			expected.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
+			var view = expected.Received().View;
+			Thread.Sleep(100);
+		}
 	}
 }
