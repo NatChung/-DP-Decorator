@@ -2,6 +2,7 @@
 using Xunit;
 using NSubstitute;
 using Decorator.PlayerComponent;
+using System.Threading;
 
 namespace DecoratorTests
 {
@@ -17,6 +18,8 @@ namespace DecoratorTests
 
 			expected.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
 			expected.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
+			var view = expected.Received().View;
+			Thread.Sleep(100);
 
 		}
 	}

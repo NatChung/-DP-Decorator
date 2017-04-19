@@ -16,6 +16,7 @@ namespace Decorator
 		public void Play(string v)
 		{
 			this.Url = v;
+			AddSubview(this.Render.View);
 			Play();
 		}
 
@@ -28,6 +29,10 @@ namespace Decorator
 		{
 			Thread playThread = new Thread(DoWork);
 			playThread.Start();
+		}
+
+		private void AddSubview(View subview)
+		{
 		}
 
 		private void DoWork()
