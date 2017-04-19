@@ -18,12 +18,12 @@ namespace Decorator.PlayerComponent
 
 		public void AddAudioData(byte[] data)
 		{
-			throw new NotImplementedException();
+			this.Render.AddAudioData(data);
 		}
 
 		public void AddVideoData(byte[] data)
 		{
-			throw new NotImplementedException();
+			this.Render.AddVideoData(data);
 		}
 	}
 }

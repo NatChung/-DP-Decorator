@@ -2,22 +2,22 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
+using Decorator.Player;
 
 namespace Decorator.PlayerComponent
 {
-	public class ResizeablePlayer
+	public class ResizeablePlayer : BasePlayer
 	{
-		private ResizeableRender resizeableRender;
-
-		public ResizeablePlayer(ResizeableRender resizeableRender)
+		public ResizeablePlayer(IMediaRender render) : base(render)
 		{
-			this.resizeableRender = resizeableRender;
 		}
-
-		public void Play(string v)
+		public override void Play(string v)
 		{
-			throw new NotImplementedException();
+			this.Url = v;
+			Thread playThread = new Thread(DoWork);
+			playThread.Start();
 		}
 	}
 }
