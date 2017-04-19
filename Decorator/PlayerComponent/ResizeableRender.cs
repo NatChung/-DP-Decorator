@@ -6,24 +6,15 @@ using System.Threading.Tasks;
 
 namespace Decorator.PlayerComponent
 {
-	public class ResizeableRender : IMediaRender
+	public class ResizeableRender : RenderDecorator
 	{
-		public IMediaRender Render { get; set; }
-		public ResizeableRender(IMediaRender render)
+		public ResizeableRender(IMediaRender render): base(render)
 		{
-			this.Render = render;
+			AddedTouchEvent(this.Render.View);
 		}
 
-		public View View { get => this.Render.View; }
-
-		public void AddAudioData(byte[] data)
+		private void AddedTouchEvent(View view)
 		{
-			this.Render.AddAudioData(data);
-		}
-
-		public void AddVideoData(byte[] data)
-		{
-			this.Render.AddVideoData(data);
 		}
 	}
 }
