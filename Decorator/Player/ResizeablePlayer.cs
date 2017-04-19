@@ -13,11 +13,6 @@ namespace Decorator.PlayerComponent
 		public ResizeablePlayer(IMediaRender render) : base(render)
 		{
 		}
-		public override void Play(string v)
-		{
-			this.Url = v;
-			Thread playThread = new Thread(DoWork);
-			playThread.Start();
-		}
+		
 	}
 }

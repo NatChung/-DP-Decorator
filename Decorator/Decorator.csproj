@@ -47,6 +47,7 @@
     <Compile Include="PlayerComponent\MediaRender.cs" />
     <Compile Include="PlayerComponent\RenderDecorator.cs" />
     <Compile Include="Player\BasePlayer.cs" />
+    <Compile Include="Player\BufferAndResizeablePlayer.cs" />
     <Compile Include="Player\BufferPlayer.cs" />
     <Compile Include="Player\ResizeablePlayer.cs" />
     <Compile Include="PlayerComponent\ResizeableRender.cs" />

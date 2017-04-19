@@ -21,7 +21,6 @@ namespace DecoratorTests
 			expected.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
 			expected.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
 			var view = expected.Received().View;
-			Thread.Sleep(100);
 
 		}
 
@@ -38,7 +37,6 @@ namespace DecoratorTests
 			expected.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
 			expected.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
 			var view = expected.Received().View;
-			Thread.Sleep(100);
 		}
 
 		[Fact]
@@ -54,7 +52,23 @@ namespace DecoratorTests
 			expected.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
 			expected.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
 			var view = expected.Received().View;
-			Thread.Sleep(100);
+		}
+
+		[Fact]
+		[Trait("Decorator", "Buffer + Resizeable Player")]
+		public void BufferAndResizeablePlayer()
+		{
+			var expected = Substitute.For<IMediaRender>();
+			ResizeableRender resizeableRender = new ResizeableRender(new BufferRender(expected));
+
+			BufferAndResizeablePlayer sut = new BufferAndResizeablePlayer(resizeableRender);
+			sut.Play("http://xxx.xxx");
+
+			expected.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
+			expected.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
+			var view = expected.Received().View;
+			Thread.Sleep(300);
+
 		}
 	}
 }

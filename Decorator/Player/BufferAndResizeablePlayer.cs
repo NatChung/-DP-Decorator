@@ -8,10 +8,11 @@ using Decorator.PlayerComponent;
 
 namespace Decorator.Player
 {
-	public class BufferPlayer : BasePlayer
+	public class BufferAndResizeablePlayer : BasePlayer
 	{
-		public BufferPlayer(IMediaRender render) : base(render)
+		public BufferAndResizeablePlayer(IMediaRender render) : base(render)
 		{
 		}
+		
 	}
 }

@@ -20,17 +20,16 @@ namespace Decorator.Player
 		protected void AddSubview(View subview)
 		{
 		}
-		public abstract void Play(string v);
+		public void Play(string v)
+		{
+			this.Url = v;
+			DoWork();
+		}
 		
-
 		protected void DoWork()
 		{
-			while (true)
-			{
-				this.Render.AddVideoData(new byte[] { });
-				this.Render.AddAudioData(new byte[] { });
-				Thread.Sleep(1000);
-			}
+			this.Render.AddVideoData(new byte[] { });
+			this.Render.AddAudioData(new byte[] { });
 		}
 
 	}
