@@ -31,7 +31,7 @@ namespace DecoratorTests
 			var expected = Substitute.For<IMediaRender>();
 			ResizeableRender resizeableRender = new ResizeableRender(expected);
 
-			ResizeablePlayerTest = new ResizeablePlayer(resizeableRender);
+			ResizeablePlayer sut = new ResizeablePlayer(resizeableRender);
 			sut.Play("http://xxx.xxx");
 
 			expected.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
