@@ -49,6 +49,7 @@ namespace DecoratorTests
 			BufferRender bufferRender = new BufferRender(expected);
 
 			BufferPlayer sut = new BufferPlayer(bufferRender);
+			sut.Play("http://xxx.xxx");
 
 			expected.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
 			expected.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
