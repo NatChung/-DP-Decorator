@@ -10,15 +10,21 @@ namespace Decorator
 {
 	public class SimplePlayer
 	{
+		private IMediaRender Render { get; set; }
 		public string Url { get; set; }
-		private MediaRender Render { get; set; }
-		public SimplePlayer(string url)
+
+		public void Play(string v)
 		{
-			this.Url = url;
-			this.Render = new MediaRender();
+			this.Url = v;
+			Play();
 		}
 
-		public void Play()
+		public SimplePlayer(IMediaRender render)
+		{
+			this.Render = render;
+		}
+
+		private void Play()
 		{
 			Thread playThread = new Thread(DoWork);
 			playThread.Start();
@@ -28,9 +34,9 @@ namespace Decorator
 		{
 			while (true)
 			{
-				Thread.Sleep(1000);
 				this.Render.AddVideoData(new byte[] {});
 				this.Render.AddAudioData(new byte[] {});
+				Thread.Sleep(1000);
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 ﻿using Decorator;
 using Xunit;
 using NSubstitute;
+using Decorator.PlayerComponent;
 
 namespace DecoratorTests
 {
@@ -12,10 +13,10 @@ namespace DecoratorTests
 			var expected = Substitute.For<IMediaRender>();
 			SimplePlayer sut = new SimplePlayer(expected);
 
-			sut.Play();
+			sut.Play("http://xxx.xxx");
 
-			expected.ReceivedWithAnyArgs(1).AddVideoData(default(byte[]));
-			expected.RecvivedWithAnyArgs(1).AddAudioData(default(byte[]));
+			expected.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
+			expected.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
 
 		}
 	}
