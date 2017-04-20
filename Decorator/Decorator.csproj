@@ -50,14 +50,10 @@
     <Compile Include="PlayerComponent\MediaSourceDecorator.cs" />
     <Compile Include="PlayerComponent\RenderDecorator.cs" />
     <Compile Include="Player\BasePlayer.cs" />
-    <Compile Include="Player\BufferAndResizeablePlayer.cs" />
-    <Compile Include="Player\BufferPlayer.cs" />
-    <Compile Include="Player\ResizeablePlayer.cs" />
     <Compile Include="PlayerComponent\ResizeableRender.cs" />
     <Compile Include="PlayerComponent\View.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Player\SimplePlayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

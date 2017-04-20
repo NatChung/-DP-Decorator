@@ -8,7 +8,7 @@ using Decorator.PlayerComponent;
 
 namespace Decorator.Player
 {
-	public abstract class BasePlayer
+	public class BasePlayer
 	{
 		protected IMediaRender Render { get; set; }
 		protected string Url { get; set; }

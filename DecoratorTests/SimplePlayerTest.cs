@@ -14,7 +14,7 @@ namespace DecoratorTests
 		public void PlayTest()
 		{
 			var expected = Substitute.For<IMediaRender>();
-			SimplePlayer sut = new SimplePlayer(expected);
+			BasePlayer sut = new BasePlayer(expected);
 
 			sut.Play("http://xxx.xxx");
 
@@ -31,7 +31,7 @@ namespace DecoratorTests
 			var expected = Substitute.For<IMediaRender>();
 			ResizeableRender resizeableRender = new ResizeableRender(expected);
 
-			ResizeablePlayer sut = new ResizeablePlayer(resizeableRender);
+			BasePlayer sut = new BasePlayer(resizeableRender);
 			sut.Play("http://xxx.xxx");
 
 			expected.ReceivedWithAnyArgs().MediaSource.AddVideoData(default(byte[]));

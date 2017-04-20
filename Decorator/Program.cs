@@ -13,7 +13,7 @@ namespace Decorator
 		static void Main(string[] args)
 		{
 			IMediaRender render = new ResizeableRender(new MediaRender(new JitterBuffer(new MediaSource())));
-			BufferAndResizeablePlayer player = new BufferAndResizeablePlayer(render);
+			BasePlayer BufferANdResizeablePlayer = new BasePlayer(render);
 
 			Console.ReadLine();
 		}
