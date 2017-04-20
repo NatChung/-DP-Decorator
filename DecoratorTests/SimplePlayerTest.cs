@@ -68,5 +68,23 @@ namespace DecoratorTests
 			expected.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
 			var view = expected.Received().View;
 		}
+
+		[Fact]
+		[Trait("Media source", "Decorator")]
+		public void MediaSourceTest()
+		{
+			var gotVideo = false;
+			var gotAudio = false;
+
+			var sut = Substitute.For<IMediaSource>();
+			sut.OnVideoData += (byte[] d) => gotVideo = true;
+			sut.OnAudioData += (byte[] d) => gotAudio = true;
+
+			sut.AddVideoData(new byte[] { });
+			sut.AddAudioData(new byte[] { });
+
+			Assert.True(gotVideo);
+			Assert.True(gotAudio);
+		}
 	}
 }
