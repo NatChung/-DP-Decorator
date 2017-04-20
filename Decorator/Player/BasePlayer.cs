@@ -28,8 +28,8 @@ namespace Decorator.Player
 		
 		protected void DoWork()
 		{
-			this.Render.AddVideoData(new byte[] { });
-			this.Render.AddAudioData(new byte[] { });
+			this.Render.MediaSource.AddVideoData(new byte[] { });
+			this.Render.MediaSource.AddAudioData(new byte[] { });
 		}
 
 	}

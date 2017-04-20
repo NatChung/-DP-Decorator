@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Decorator.Player;
 using Decorator.PlayerComponent;
 
 namespace Decorator
@@ -11,8 +12,8 @@ namespace Decorator
 	{
 		static void Main(string[] args)
 		{
-			SimplePlayer player = new SimplePlayer(new MediaRender());
-			player.Play("http://127.0.0.1/source");
+			IMediaRender render = new ResizeableRender(new MediaRender(new JitterBuffer(new MediaSource())));
+			BufferAndResizeablePlayer player = new BufferAndResizeablePlayer(render);
 
 			Console.ReadLine();
 		}

@@ -10,20 +10,13 @@ namespace Decorator.PlayerComponent
 	{
 		public IMediaRender Render { get; set; }
 		public View View { get => this.Render.View; }
+		public IMediaSource MediaSource { get ; set; }
 
 		public RenderDecorator(IMediaRender render)
 		{
 			this.Render = render;
+			this.MediaSource = this.Render.MediaSource;
 		}
 
-		public virtual void AddAudioData(byte[] data)
-		{
-			this.Render.AddAudioData(data);
-		}
-
-		public virtual void AddVideoData(byte[] data)
-		{
-			this.Render.AddVideoData(data);
-		}
 	}
 }

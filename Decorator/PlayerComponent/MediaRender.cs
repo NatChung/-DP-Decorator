@@ -9,9 +9,14 @@ namespace Decorator.PlayerComponent
 	public class MediaRender : IMediaRender
 	{
 		public View View { get; set; }
-		public MediaRender()
+		public IMediaSource MediaSource { get; set ; }
+
+		public MediaRender(IMediaSource source)
 		{
 			this.View = new View();
+			this.MediaSource = source;
+			this.MediaSource.OnAudioData = AddAudioData;
+			this.MediaSource.OnVideoData = AddVideoData;
 		}
 		public void AddVideoData(byte[] v)
 		{

@@ -42,7 +42,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlayerComponent\BufferRender.cs" />
     <Compile Include="PlayerComponent\IMediaRender.cs" />
     <Compile Include="PlayerComponent\IMediaSource.cs" />
     <Compile Include="PlayerComponent\JitterBuffer.cs" />

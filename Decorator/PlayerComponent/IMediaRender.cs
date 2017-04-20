@@ -9,7 +9,6 @@ namespace Decorator.PlayerComponent
 	public interface IMediaRender
 	{
 		View View { get;  }
-		void AddVideoData(byte[] data);
-		void AddAudioData(byte[] data);
+		IMediaSource MediaSource { get; set; }
 	}
 }
