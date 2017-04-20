@@ -67,8 +67,6 @@ namespace DecoratorTests
 			expected.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
 			expected.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
 			var view = expected.Received().View;
-			Thread.Sleep(300);
-
 		}
 	}
 }
