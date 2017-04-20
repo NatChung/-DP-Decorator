@@ -44,7 +44,9 @@
   <ItemGroup>
     <Compile Include="PlayerComponent\BufferRender.cs" />
     <Compile Include="PlayerComponent\IMediaRender.cs" />
+    <Compile Include="PlayerComponent\IMediaSource.cs" />
     <Compile Include="PlayerComponent\MediaRender.cs" />
+    <Compile Include="PlayerComponent\MediaSource.cs" />
     <Compile Include="PlayerComponent\RenderDecorator.cs" />
     <Compile Include="Player\BasePlayer.cs" />
     <Compile Include="Player\BufferAndResizeablePlayer.cs" />

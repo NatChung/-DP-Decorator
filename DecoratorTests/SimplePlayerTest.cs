@@ -76,9 +76,9 @@ namespace DecoratorTests
 			var gotVideo = false;
 			var gotAudio = false;
 
-			var sut = Substitute.For<IMediaSource>();
-			sut.OnVideoData += (byte[] d) => gotVideo = true;
-			sut.OnAudioData += (byte[] d) => gotAudio = true;
+			var sut = new MediaSource();
+			sut.OnVideoData = (byte[] d) => gotVideo = true;
+			sut.OnAudioData = (byte[] d) => gotAudio = true;
 
 			sut.AddVideoData(new byte[] { });
 			sut.AddAudioData(new byte[] { });
