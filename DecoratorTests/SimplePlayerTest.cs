@@ -105,7 +105,7 @@ namespace DecoratorTests
 		[Trait("Media source with Decorator", "Decorator")]
 		public void MediaSourceWithDecoratorTest2()
 		{
-			var expected = Substitute.For<IMediaSource>();
+			var expected =  new MediaSource();
 			IMediaSource sut = new JitterBuffer(expected);
 
 			var gotVideo = false;
