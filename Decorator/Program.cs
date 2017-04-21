@@ -10,9 +10,6 @@ namespace Decorator
 	{
 		static void Main(string[] args)
 		{
-			SimplePlayer player = new SimplePlayer("http://127.0.0.1/source");
-			player.Play();
-
 			Console.ReadLine();
 		}
 	}

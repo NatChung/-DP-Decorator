@@ -8,5 +8,6 @@ namespace Decorator.PlayerComponent
 {
 	public class View
 	{
+		public Action<View> OnTouchEvent { get; set; }
 	}
 }

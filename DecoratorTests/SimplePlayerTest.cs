@@ -9,10 +9,6 @@ namespace DecoratorTests
 {
 	public class SimplePlayerTest
 	{
-		[Fact]
-		public void PlayTest()
-		{
-			
-		}
+		
 	}
 }
