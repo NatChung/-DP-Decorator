@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Decorator;
+using Decorator.PlayerComponent;
 using NSubstitute;
 using Xunit;
 
@@ -19,8 +21,8 @@ namespace DecoratorTests
 			var sut = new Player(expect);
 			sut.Play();
 
-			expect.ReceivedWithAnyArgs().AddVideoData(default(byte[]);
-			expect.ReceivedWithAnyArgs().AddAudioData(default(byte[]);
+			expect.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
+			expect.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
 		}
 	}
 }
