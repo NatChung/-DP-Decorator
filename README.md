@@ -1,6 +1,7 @@
 # -DP-Decorator
 ## Simple Player
 1. SUT1: Player, Mock:IMediaRender, Action: Player.Play, Expected: Mock.AddVideo & Mock.AddAudio
+2. SUT12: Player, Mock:IMediaRender, Action: Constroctor, Expected: Mock.View
 ## Resizeable Player
 1. SUT2: ResizeableRender, Mock:IMediaRender, Action: AddVideo, Expected: Mock.AddVideo
 2. SUT3: ResizeableRender, Mock:IMediaRender, Action: AddAudio, Expected: Mock.AddAudio
