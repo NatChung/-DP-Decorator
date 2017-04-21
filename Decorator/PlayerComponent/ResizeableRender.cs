@@ -13,6 +13,12 @@ namespace Decorator.PlayerComponent
 		public ResizeableRender(IMediaRender expect)
 		{
 			this.render = expect;
+			this.render.View.OnTouchEvent = OnTouchEvent;
+		}
+
+		private void OnTouchEvent(View obj)
+		{
+			
 		}
 
 		public View View => throw new NotImplementedException();
