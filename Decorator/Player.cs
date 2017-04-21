@@ -9,17 +9,23 @@ namespace Decorator
 {
 	public class Player
 	{
-		private IMediaRender redner;
+		private IMediaRender render;
 
 		public Player(IMediaRender render)
 		{
-			this.redner = render;
+			this.render = render;
+			AddSubview(this.render.View);
+		}
+
+		private void AddSubview(View view)
+		{
+			
 		}
 
 		public void Play()
 		{
-			this.redner.AddAudioData(new byte[] { });
-			this.redner.AddVideoData(new byte[] { });
+			this.render.AddAudioData(new byte[] { });
+			this.render.AddVideoData(new byte[] { });
 		}
 	}
 }

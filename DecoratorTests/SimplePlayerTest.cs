@@ -26,7 +26,7 @@ namespace DecoratorTests
 		}
 
 		[Fact]
-		[Trait("Player add subview", "Decorator")]
+		[Trait("Player", "Decorator")]
 		public void PlayerAddSubViewTest()
 		{
 			var expect = Substitute.For<IMediaRender>();
