@@ -35,5 +35,17 @@ namespace DecoratorTests
 
 			var view = expect.ReceivedWithAnyArgs().View;
 		}
+
+		[Fact]
+		[Trait("ReiszeableRender", "Decorator")]
+		public void ResizeableRenderAddVideoDataTest()
+		{
+			var expect = Substitute.For<IMediaRender>();
+
+			var sut = new ResizeableRender(expect);
+			sut.AddVideoData(new byte[] { });
+
+			expect.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
+		}
 	}
 }

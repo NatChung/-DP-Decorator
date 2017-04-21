@@ -44,6 +44,7 @@
   <ItemGroup>
     <Compile Include="Player.cs" />
     <Compile Include="PlayerComponent\IMediaRender.cs" />
+    <Compile Include="PlayerComponent\ResizeableRender.cs" />
     <Compile Include="PlayerComponent\View.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
