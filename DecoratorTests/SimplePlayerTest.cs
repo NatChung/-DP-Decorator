@@ -59,5 +59,16 @@ namespace DecoratorTests
 
 			expect.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
 		}
+
+		[Fact]
+		[Trait("ReiszeableRender", "Decorator")]
+		public void ResizeableRenderOnTouchEvent()
+		{
+			var expect = new MediaRender();
+
+			var sut = new ResizeableRender(expect);
+
+			Assert.Equal(expect.View.OnTouchEvent.Method.Name, "OnTouchEvent");
+		}
 	}
 }
