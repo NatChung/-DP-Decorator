@@ -24,5 +24,16 @@ namespace DecoratorTests
 			expect.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
 			expect.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
 		}
+
+		[Fact]
+		[Trait("Player add subview", "Decorator")]
+		public void PlayerAddSubViewTest()
+		{
+			var expect = Substitute.For<IMediaRender>();
+
+			var sut = new Player(expect);
+
+			var view = expect.ReceivedWithAnyArgs().View;
+		}
 	}
 }
