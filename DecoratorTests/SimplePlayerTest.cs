@@ -20,8 +20,18 @@ namespace DecoratorTests
 
 			expected.ReceivedWithAnyArgs().MediaSource.AddAudioData(default(byte[]));
 			expected.ReceivedWithAnyArgs().MediaSource.AddAudioData(default(byte[]));
-			var view = expected.Received().View;
 
+		}
+
+		[Fact]
+		[Trait("Decorator", "MediaRender")]
+		public void PlayConstrouctorTest()
+		{
+			var expected = Substitute.For<IMediaSource>();
+			MediaRender sut = new MediaRender(expected);
+
+			Assert.Equal(expected.OnAudioData.Method.Name, "AddAudioData");
+			Assert.Equal(expected.OnVideoData.Method.Name, "AddVideoData");
 		}
 
 		[Fact]
@@ -36,54 +46,44 @@ namespace DecoratorTests
 
 			expected.ReceivedWithAnyArgs().MediaSource.AddVideoData(default(byte[]));
 			expected.ReceivedWithAnyArgs().MediaSource.AddAudioData(default(byte[]));
+		}
+
+		[Fact]
+		[Trait("Decorator", "Resizable player")]
+		public void ResizeablePlayerConstroucorTest()
+		{
+			var expected = Substitute.For<IMediaRender>();
+			ResizeableRender resizeableRender = new ResizeableRender(expected);
+
+			BasePlayer sut = new BasePlayer(resizeableRender);
 			var view = expected.Received().View;
 		}
 
-		//[Fact]
-		//[Trait("Decorator", "Buffer player")]
-		//public void BufferPlayerTest()
-		//{
-		//	var expected = Substitute.For<IMediaRender>();
-		//	BufferRender bufferRender = new BufferRender(expected);
-
-		//	BufferPlayer sut = new BufferPlayer(bufferRender);
-		//	sut.Play("http://xxx.xxx");
-
-		//	expected.ReceivedWithAnyArgs().MediaSource.AddVideoData(default(byte[]));
-		//	expected.ReceivedWithAnyArgs().MediaSource.AddAudioData(default(byte[]));
-		//	var view = expected.Received().View;
-		//}
-
-		//[Fact]
-		//[Trait("Decorator", "Buffer + Resizeable Player")]
-		//public void BufferAndResizeablePlayer()
-		//{
-		//	var expected = Substitute.For<IMediaRender>();
-		//	ResizeableRender resizeableRender = new ResizeableRender(new BufferRender(expected));
-
-		//	BufferAndResizeablePlayer sut = new BufferAndResizeablePlayer(resizeableRender);
-		//	sut.Play("http://xxx.xxx");
-
-		//	expected.ReceivedWithAnyArgs().MediaSource.AddVideoData(default(byte[]));
-		//	expected.ReceivedWithAnyArgs().MediaSource.AddAudioData(default(byte[]));
-		//	var view = expected.Received().View;
-		//}
-
 		[Fact]
 		[Trait("Media source", "Decorator")]
-		public void MediaSourceTest()
+		public void MediaSourceVideoTest()
 		{
 			var gotVideo = false;
-			var gotAudio = false;
 
 			var sut = new MediaSource();
 			sut.OnVideoData = (byte[] d) => gotVideo = true;
-			sut.OnAudioData = (byte[] d) => gotAudio = true;
 
 			sut.AddVideoData(new byte[] { });
-			sut.AddAudioData(new byte[] { });
 
 			Assert.True(gotVideo);
+		}
+
+		[Fact]
+		[Trait("Media source", "Decorator")]
+		public void MediaSourceAudioTest()
+		{
+			var gotAudio = false;
+
+			var sut = new MediaSource();
+			sut.OnAudioData = (byte[] d) => gotAudio = true;
+			
+			sut.AddAudioData(new byte[] { });
+			
 			Assert.True(gotAudio);
 		}
 
@@ -92,13 +92,10 @@ namespace DecoratorTests
 		public void MediaSourceWithDecoratorTest()
 		{
 			var expected = Substitute.For<IMediaSource>();
-			IMediaSource sut = new JitterBuffer(expected);
+			IMediaSource sut = new MediaSourceDecorator(expected);
 			
 			sut.AddVideoData(new byte[] { });
-			sut.AddAudioData(new byte[] { });
-
 			expected.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
-			expected.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
 		}
 
 		[Fact]
@@ -106,18 +103,14 @@ namespace DecoratorTests
 		public void MediaSourceWithDecoratorTest2()
 		{
 			var expected =  new MediaSource();
-			IMediaSource sut = new JitterBuffer(expected);
-
-			var gotVideo = false;
+			IMediaSource sut = new MediaSourceDecorator(expected);
+			
 			var gotAudio = false;
-
-			expected.OnVideoData = (byte[] d) => gotVideo = true;
+			
 			expected.OnAudioData = (byte[] d) => gotAudio = true;
-
-			sut.AddVideoData(new byte[] { });
+			
 			sut.AddAudioData(new byte[] { });
-
-			Assert.True(gotVideo);
+			
 			Assert.True(gotAudio);
 		}
 	}

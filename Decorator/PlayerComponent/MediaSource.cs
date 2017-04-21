@@ -13,12 +13,12 @@ namespace Decorator.PlayerComponent
 
 		public void AddAudioData(byte[] data)
 		{
-			OnVideoData(data);
+			OnAudioData(data);
 		}
 
 		public void AddVideoData(byte[] data)
 		{
-			OnAudioData(data);
+			OnVideoData(data);
 		}
 	}
 }
