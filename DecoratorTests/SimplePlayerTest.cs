@@ -47,5 +47,17 @@ namespace DecoratorTests
 
 			expect.ReceivedWithAnyArgs().AddVideoData(default(byte[]));
 		}
+
+		[Fact]
+		[Trait("ReiszeableRender", "Decorator")]
+		public void ResizeableRenderAddAudioDataTest()
+		{
+			var expect = Substitute.For<IMediaRender>();
+
+			var sut = new ResizeableRender(expect);
+			sut.AddAudioData(new byte[] { });
+
+			expect.ReceivedWithAnyArgs().AddAudioData(default(byte[]));
+		}
 	}
 }
